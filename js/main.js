@@ -1,15 +1,3 @@
-// =====================================================
-// OrbitAlert Simples — JavaScript Principal
-// Sem SVG. Apenas manipulação de DOM puro.
-// =====================================================
-
-// =====================================================
-// BARRA DE PROGRESSO DE SCROLL
-// =====================================================
-
-// Referência à barra de progresso no topo
-const scrollBar = document.getElementById('scroll-bar');
-
 // Atualiza a largura da barra conforme o usuário rola a página
 window.addEventListener('scroll', () => {
   // Calcula a porcentagem de scroll (0% a 100%)
@@ -18,9 +6,8 @@ window.addEventListener('scroll', () => {
   if (scrollBar) scrollBar.style.width = scrolled + '%';
 });
 
-// =====================================================
 // HEADER — EFEITO DE SCROLL
-// =====================================================
+
 
 // Referência ao elemento header
 const header = document.querySelector('header');
@@ -34,9 +21,8 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// =====================================================
 // MENU HAMBÚRGUER (MOBILE)
-// =====================================================
+
 
 // Referência ao botão hambúrguer
 const hamburger = document.querySelector('.hamburger');
@@ -44,7 +30,7 @@ const hamburger = document.querySelector('.hamburger');
 // Referência ao menu mobile
 const mobileMenu = document.querySelector('.mobile-menu');
 
-// Adiciona comportamento ao hambúrguer se existir
+// Adiciona comportamento ao hambúrguer
 if (hamburger && mobileMenu) {
 
   // Abre/fecha o menu ao clicar no hambúrguer
@@ -74,9 +60,7 @@ if (hamburger && mobileMenu) {
   });
 }
 
-// =====================================================
 // LINK ATIVO NA NAVEGAÇÃO
-// =====================================================
 
 // Pega o nome da página atual pela URL
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -88,9 +72,8 @@ document.querySelectorAll('nav a, .mobile-menu a').forEach(link => {
   }
 });
 
-// =====================================================
-// DADOS DOS ALERTAS (para popular o modal)
-// =====================================================
+// DADOS DOS ALERTAS 
+
 
 // Objeto com todos os dados de cada alerta
 const alertData = {
@@ -144,9 +127,8 @@ const alertData = {
   }
 };
 
-// =====================================================
 // MODAL DE DETALHES DO ALERTA
-// =====================================================
+
 
 // Referência ao overlay do modal
 const modalOverlay = document.getElementById('modal');
