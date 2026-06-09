@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OrbitAlert — Monitoramento de Detritos Espaciais sobre o Brasil">
+  <title>OrbitAlert — Início</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Barra de progresso de scroll no topo -->
+  <div id="scroll-bar"></div>
+
+  <!-- Cabeçalho fixo -->
+  <header>
+    <a href="index.html" class="logo">OrbitAlert</a>
+    <nav>
+      <a href="index.html" class="active">Início</a>
+      <a href="alertas.html">Alertas</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Menu mobile -->
+  <nav class="mobile-menu" aria-label="Menu mobile">
+    <a href="index.html" class="active">Início</a>
+    <a href="alertas.html">Alertas</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <!-- Indicador de sistema ao vivo -->
+        <div class="status-line">
+          <span class="status-dot"></span>
+          Sistema operacional — atualizado em tempo real
+        </div>
+
+        <!-- Título principal -->
+        <h1>Vigilância<br>do <span>Espaço</span><br>Orbital</h1>
+
+        <!-- Subtítulo descritivo -->
+        <p class="hero-sub">
+          Monitoramento contínuo de detritos e objetos não operacionais em
+          órbita baixa terrestre (LEO), com rastreamento de trajetórias que
+          cruzam o espaço aéreo brasileiro.
+        </p>
+
+        <!-- Botões de ação -->
+        <div class="hero-btns">
+          <a href="alertas.html" class="btn-primary">Ver Alertas Ativos</a>
+          <a href="sobre.html"   class="btn-secondary">Saiba Mais</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ESTATÍSTICAS ==================== -->
+    <section class="stats">
+      <div class="stats-grid">
+
+        <!-- Card 1 — objetos rastreados -->
+        <div class="stat-card fade-in">
+          <span class="stat-num" data-target="27835">0</span>
+          <span class="stat-label">Objetos Rastreados</span>
+        </div>
+
+        <!-- Card 2 — alertas ativos -->
+        <div class="stat-card fade-in">
+          <span class="stat-num" data-target="6">0</span>
+          <span class="stat-label">Alertas Ativos</span>
+        </div>
+
+        <!-- Card 3 — passes hoje -->
+        <div class="stat-card fade-in">
+          <span class="stat-num" data-target="143">0</span>
+          <span class="stat-label">Passes Hoje</span>
+        </div>
+
+        <!-- Card 4 — satélites monitorados -->
+        <div class="stat-card fade-in">
+          <span class="stat-num" data-target="8402">0</span>
+          <span class="stat-label">Satélites Ativos</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ==================== ÚLTIMOS ALERTAS ==================== -->
+    <div class="section">
+
+      <div class="section-head">
+        <h2>Últimos Alertas</h2>
+        <span class="badge">Ao Vivo</span>
+      </div>
+
+      <!-- Grid de 3 cards de alerta — os mais recentes -->
+      <div class="alerts-grid">
+
+        <!-- Alerta crítico -->
+        <div class="alert-card fade-in"
+             data-id="cosmos"
+             data-level="critical"
+             data-region="norte"
+             role="button" tabindex="0"
+             aria-label="Ver detalhes do alerta Cosmos-2251">
+          <div class="alert-bar critical"></div>
+          <div class="alert-body">
+            <div class="alert-top">
+              <span class="level-badge critical">Crítico</span>
+              <span class="alert-time">03:42 UTC</span>
+            </div>
+            <h3>DEBRIS COSMOS-2251</h3>
+            <p>Fragmento da colisão de 2009. Passagem sobre a Amazônia com distância mínima calculada.</p>
+            <div class="alert-meta">
+              <span class="meta-item">776 km LEO</span>
+              <span class="meta-item">Amazônia, AM</span>
+              <span class="meta-item">~3.2m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerta moderado -->
+        <div class="alert-card fade-in"
+             data-id="fengyun"
+             data-level="critical"
+             data-region="centro-oeste"
+             role="button" tabindex="0"
+             aria-label="Ver detalhes do alerta FengYun-1C">
+          <div class="alert-bar critical"></div>
+          <div class="alert-body">
+            <div class="alert-top">
+              <span class="level-badge critical">Crítico</span>
+              <span class="alert-time">14:22 UTC</span>
+            </div>
+            <h3>FRAGMENTO FENGYUN-1C</h3>
+            <p>Um dos 3.000+ fragmentos do teste antisatélite chinês de 2007. Maior evento de detritos da história.</p>
+            <div class="alert-meta">
+              <span class="meta-item">858 km LEO</span>
+              <span class="meta-item">Centro-Oeste</span>
+              <span class="meta-item">~0.3m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerta baixo -->
+        <div class="alert-card fade-in"
+             data-id="sl16"
+             data-level="moderate"
+             data-region="nordeste"
+             role="button" tabindex="0"
+             aria-label="Ver detalhes do alerta SL-16">
+          <div class="alert-bar moderate"></div>
+          <div class="alert-body">
+            <div class="alert-top">
+              <span class="level-badge moderate">Moderado</span>
+              <span class="alert-time">08:15 UTC</span>
+            </div>
+            <h3>OBJETO SL-16 R/B</h3>
+            <p>Corpo do foguete Zenit soviético. Rastreado desde 1990, órbita estável com decaimento previsto para 2031.</p>
+            <div class="alert-meta">
+              <span class="meta-item">824 km LEO</span>
+              <span class="meta-item">Nordeste</span>
+              <span class="meta-item">~8.1m</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link para ver todos os alertas -->
+      <div style="text-align:center; margin-top:32px;">
+        <a href="alertas.html" class="btn-secondary">Ver Todos os Alertas</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">OrbitAlert</div>
+        <p class="footer-desc">Sistema de monitoramento de detritos espaciais em órbita baixa terrestre sobre o território brasileiro.</p>
+      </div>
+      <div>
+        <p class="footer-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="alertas.html">Alertas</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Fontes</p>
+        <ul class="footer-links">
+          <li><a href="#">NORAD / USSPACECOM</a></li>
+          <li><a href="#">NASA ODPO</a></li>
+          <li><a href="#">ESA Space Debris</a></li>
+          <li><a href="#">INPE — Brasil</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Status</p>
+        <ul class="footer-links">
+          <li><a href="#">Sistema Online</a></li>
+          <li><a href="#">Rastreamento Ativo</a></li>
+          <li><a href="#">API Operacional</a></li>
+          <li><a href="#">Alertas Ativos: 6</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 OrbitAlert — Dados para fins acadêmicos</span>
+    </div>
+  </footer>
+
+  <!-- Modal de detalhes do alerta -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <span class="level-badge" id="m-level">—</span>
+          <h2 id="m-title" style="margin-top:8px;">—</h2>
+        </div>
+        <button class="modal-close" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-item">
+            <div class="modal-label">Órbita</div>
+            <div class="modal-value" id="m-orbit">—</div>
+          </div>
+          <div class="modal-item">
+            <div class="modal-label">Velocidade</div>
+            <div class="modal-value" id="m-vel">—</div>
+          </div>
+          <div class="modal-item">
+            <div class="modal-label">Tamanho Estimado</div>
+            <div class="modal-value" id="m-size">—</div>
+          </div>
+          <div class="modal-item">
+            <div class="modal-label">Prob. Colisão</div>
+            <div class="modal-value" id="m-prob">—</div>
+          </div>
+          <div class="modal-item">
+            <div class="modal-label">Região</div>
+            <div class="modal-value" id="m-region">—</div>
+          </div>
+          <div class="modal-item">
+            <div class="modal-label">Horário UTC</div>
+            <div class="modal-value" id="m-time">—</div>
+          </div>
+        </div>
+        <div class="modal-divider"></div>
+        <p class="modal-sub">Análise Técnica</p>
+        <p class="modal-desc" id="m-desc">—</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

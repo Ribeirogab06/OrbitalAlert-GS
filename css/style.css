@@ -1,0 +1,1327 @@
+/* =====================================================
+   OrbitAlert Simples — Folha de Estilos Principal
+   Sem SVG. Apenas HTML, CSS e JavaScript.
+   ===================================================== */
+
+/* Importa as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap');
+
+/* Variáveis globais de cor e tipografia */
+:root {
+  --bg:       #030712;
+  --bg2:      #0a0f1e;
+  --bg3:      #0f1629;
+  --accent:   #ff6400;
+  --accent2:  #ff8c00;
+  --danger:   #ff2442;
+  --warning:  #ffaa00;
+  --ok:       #00cc66;
+  --txt:      #e8f0ff;
+  --txt2:     #8898bb;
+  --txt3:     #4a5568;
+  --border:   rgba(255,100,0,0.18);
+  --font-d:   'Orbitron', monospace;
+  --font-m:   'Share Tech Mono', monospace;
+  --font-b:   'Exo 2', sans-serif;
+  --trans:    all 0.3s ease;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--font-b);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   BARRA DE PROGRESSO DE SCROLL
+   ===================================================== */
+
+/* Barra laranja fixa no topo que cresce com o scroll */
+#scroll-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+/* Cabeçalho fixo no topo */
+header {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  transition: var(--trans);
+}
+
+/* Fundo do header ao rolar */
+header.scrolled {
+  background: rgba(3, 7, 18, 0.95);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(12px);
+}
+
+/* Logo — link clicável */
+.logo {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--txt);
+  text-decoration: none;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--trans);
+}
+
+/* Quadrado laranja decorativo antes do nome */
+.logo::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+/* Navegação desktop */
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  color: var(--txt2);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: var(--trans);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* Linha sublinhada animada no hover */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--accent);
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Botão hambúrguer — visível apenas no mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Cada linha do hambúrguer */
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--txt);
+  transition: var(--trans);
+}
+
+/* Animação de X quando ativo */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menu mobile — desliza de cima */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 67px;
+  left: 0;
+  right: 0;
+  background: rgba(10, 15, 30, 0.98);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 99;
+  backdrop-filter: blur(12px);
+}
+
+/* Exibe o menu quando aberto */
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-family: var(--font-m);
+  font-size: 0.85rem;
+  color: var(--txt2);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: var(--trans);
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  color: var(--accent);
+}
+
+/* =====================================================
+   CONTEÚDO PRINCIPAL — padding-top para compensar o header fixo
+   ===================================================== */
+
+main {
+  padding-top: 64px;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container interno do hero */
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Linha de status no topo do hero */
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--txt2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Ponto piscante de status */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Título principal */
+.hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  color: var(--txt);
+  margin-bottom: 20px;
+}
+
+/* Destaque laranja dentro do H1 */
+.hero h1 span {
+  color: var(--accent);
+}
+
+/* Subtítulo do hero */
+.hero-sub {
+  font-family: var(--font-m);
+  font-size: 0.85rem;
+  color: var(--txt2);
+  max-width: 560px;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  margin-bottom: 36px;
+}
+
+/* Grupo de botões CTA */
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Botão primário */
+.btn-primary {
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--trans);
+}
+
+.btn-primary:hover {
+  background: var(--accent2);
+  transform: translateY(-2px);
+}
+
+/* Botão secundário */
+.btn-secondary {
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--trans);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,100,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   GRID DE ESTATÍSTICAS
+   ===================================================== */
+
+.stats {
+  padding: 60px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid de 4 cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Cada card de estatística */
+.stat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 28px 20px;
+  text-align: center;
+  transition: var(--trans);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha colorida no topo do card */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* Número grande do card */
+.stat-num {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Rótulo abaixo do número */
+.stat-label {
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  color: var(--txt2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   DIVISOR
+   ===================================================== */
+
+/* Linha decorativa de separação entre seções */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 0 24px;
+  opacity: 0.4;
+}
+
+/* =====================================================
+   SEÇÃO GENÉRICA
+   ===================================================== */
+
+.section {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cabeçalho da seção com título e badge */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+/* Título H2 da seção */
+.section-head h2 {
+  font-family: var(--font-d);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--txt);
+}
+
+/* Badge técnico ao lado do título */
+.badge {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   CARDS DE ALERTA
+   ===================================================== */
+
+/* Grid de 3 colunas */
+.alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Card individual de alerta */
+.alert-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--trans);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito hover */
+.alert-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* Barra colorida no topo — varia por nível */
+.alert-bar {
+  height: 3px;
+  width: 100%;
+}
+
+.alert-bar.critical { background: var(--danger); }
+.alert-bar.moderate { background: var(--warning); }
+.alert-bar.low      { background: var(--ok); }
+
+/* Conteúdo interno do card */
+.alert-body {
+  padding: 20px;
+}
+
+/* Linha com badge de nível e horário */
+.alert-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Badge colorido de nível */
+.level-badge {
+  font-family: var(--font-m);
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid currentColor;
+}
+
+.level-badge.critical { color: var(--danger); }
+.level-badge.moderate { color: var(--warning); }
+.level-badge.low      { color: var(--ok); }
+
+/* Horário UTC do alerta */
+.alert-time {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--txt3);
+  letter-spacing: 1px;
+}
+
+/* Título H3 do alerta */
+.alert-card h3 {
+  font-family: var(--font-d);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--txt);
+  margin-bottom: 8px;
+}
+
+/* Descrição do alerta */
+.alert-card p {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  color: var(--txt2);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Linha de metadados (altitude, região, tamanho) */
+.alert-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Cada item de metadado */
+.meta-item {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--txt3);
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   FILTROS
+   ===================================================== */
+
+/* Container dos filtros */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+/* Botão de filtro */
+.filter-btn {
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--txt2);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+/* Estado ativo / hover */
+.filter-btn:hover,
+.filter-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(255,100,0,0.08);
+}
+
+/* Contador de alertas visíveis */
+.alerts-count {
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.alerts-count span {
+  color: var(--accent);
+}
+
+/* Mensagem "nenhum alerta encontrado" */
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 60px 0;
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   MODAL
+   ===================================================== */
+
+/* Overlay escuro por cima da página */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.85);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(6px);
+}
+
+/* Exibe o modal quando ativo */
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Caixa central do modal */
+.modal-box {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 540px;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+/* Cabeçalho do modal */
+.modal-head {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Título do modal */
+.modal-head h2 {
+  font-family: var(--font-d);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--txt);
+  line-height: 1.3;
+}
+
+/* Botão de fechar o modal */
+.modal-close {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--txt2);
+  font-size: 1rem;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--trans);
+}
+
+.modal-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Corpo do modal */
+.modal-body {
+  padding: 24px;
+}
+
+/* Grid de dados técnicos do objeto */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Item de dado técnico */
+.modal-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 14px;
+}
+
+/* Rótulo do dado */
+.modal-label {
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Valor do dado */
+.modal-value {
+  font-family: var(--font-d);
+  font-size: 0.82rem;
+  color: var(--accent);
+}
+
+/* Divisor dentro do modal */
+.modal-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+/* Título da análise técnica */
+.modal-sub {
+  font-family: var(--font-m);
+  font-size: 0.62rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Parágrafo de descrição do modal */
+.modal-desc {
+  font-family: var(--font-b);
+  font-size: 0.85rem;
+  color: var(--txt2);
+  line-height: 1.7;
+}
+
+/* =====================================================
+   SEÇÃO SOBRE
+   ===================================================== */
+
+/* Grid de 2 colunas: texto + timeline */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Parágrafos da missão */
+.about-text p {
+  font-size: 0.9rem;
+  color: var(--txt2);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* Título interno da seção sobre */
+.about-text h3 {
+  font-family: var(--font-d);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 28px 0 16px;
+}
+
+/* Grid de tecnologias */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Card de tecnologia */
+.tech-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 16px 12px;
+  text-align: center;
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  color: var(--txt2);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: var(--trans);
+}
+
+.tech-card:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Timeline vertical */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+/* Linha vertical da timeline */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+/* Cada item da timeline */
+.tl-item {
+  position: relative;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Ponto circular ao lado da linha */
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+
+/* Ano do evento */
+.tl-year {
+  font-family: var(--font-d);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+/* Título do evento */
+.tl-title {
+  font-family: var(--font-m);
+  font-size: 0.82rem;
+  color: var(--txt);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+/* Descrição do evento */
+.tl-desc {
+  font-size: 0.8rem;
+  color: var(--txt2);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   FORMULÁRIO DE CONTATO
+   ===================================================== */
+
+/* Grid de 2 colunas: info + form */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Coluna de informações de contato */
+.contact-info h3 {
+  font-family: var(--font-d);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--txt);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Item de canal de contato */
+.info-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+/* Ícone do canal */
+.info-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Rótulo do canal */
+.info-label {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* Valor do canal */
+.info-value {
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* Grupo de campo do formulário */
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* Label do campo */
+.form-group label {
+  display: block;
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--txt3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Inputs, select e textarea */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  font-family: var(--font-b);
+  font-size: 0.88rem;
+  padding: 12px 14px;
+  outline: none;
+  transition: var(--trans);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  background: var(--bg3);
+}
+
+/* Alinha dois campos lado a lado */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Textarea com altura mínima */
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Mensagem de erro de campo */
+.field-error {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--danger);
+  letter-spacing: 1px;
+  margin-top: 4px;
+  display: none;
+}
+
+/* Exibe a mensagem de erro quando ativo */
+.field-error.show {
+  display: block;
+}
+
+/* Borda vermelha no campo com erro */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: var(--danger);
+}
+
+/* Container do checkbox */
+.check-group {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.check-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.check-group label {
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  color: var(--txt2);
+  letter-spacing: 1px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+/* Mensagem de sucesso após envio */
+.form-success {
+  display: none;
+  background: rgba(0, 204, 102, 0.08);
+  border: 1px solid var(--ok);
+  padding: 28px;
+  text-align: center;
+}
+
+/* Exibe quando o form é enviado com sucesso */
+.form-success.show {
+  display: block;
+}
+
+.form-success .ok-icon {
+  font-size: 2rem;
+  color: var(--ok);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.form-success p {
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  color: var(--txt2);
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   FAQ (ACORDEÃO NATIVO)
+   ===================================================== */
+
+.faq-section {
+  padding: 0 24px 80px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* Elemento nativo de acordeão */
+details {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  transition: var(--trans);
+}
+
+details[open] {
+  border-color: rgba(255,100,0,0.35);
+}
+
+/* Título clicável do acordeão */
+summary {
+  padding: 18px 20px;
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  color: var(--txt);
+  cursor: pointer;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  user-select: none;
+  transition: var(--trans);
+}
+
+summary:hover {
+  color: var(--accent);
+}
+
+/* Ícone + no summary */
+summary::after {
+  content: '+';
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-family: var(--font-m);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Rotaciona o + quando aberto */
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+/* Conteúdo expandido */
+details div {
+  padding: 0 20px 18px;
+  font-size: 0.85rem;
+  color: var(--txt2);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+}
+
+details div p {
+  padding-top: 14px;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 24px;
+}
+
+/* Grid de 4 colunas */
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+/* Título das colunas do footer */
+.footer-title {
+  font-family: var(--font-d);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--txt);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Descrição da marca no footer */
+.footer-desc {
+  font-size: 0.82rem;
+  color: var(--txt3);
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+/* Links do footer */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--txt3);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: var(--trans);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* Linha divisória */
+.footer-line {
+  height: 1px;
+  background: var(--border);
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+/* Rodapé inferior com copyright */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copy {
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  color: var(--txt3);
+  letter-spacing: 1px;
+}
+
+.footer-version {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--txt3);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  letter-spacing: 1.5px;
+}
+
+/* =====================================================
+   ANIMAÇÃO DE FADE-IN AO ROLAR
+   ===================================================== */
+
+/* Estado inicial — invisível e deslocado */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estado visível — ativado pelo JS via IntersectionObserver */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays escalonados para animar em sequência */
+.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(5) { transition-delay: 0.4s; }
+.fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+/* =====================================================
+   RESPONSIVIDADE
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  /* Grid de 2 colunas no tablet */
+  .stats-grid       { grid-template-columns: repeat(2, 1fr); }
+  .alerts-grid      { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid      { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  /* Esconde nav desktop, mostra hambúrguer */
+  nav               { display: none; }
+  .hamburger        { display: flex; }
+
+  /* Grids viram coluna única */
+  .stats-grid       { grid-template-columns: repeat(2, 1fr); }
+  .alerts-grid      { grid-template-columns: 1fr; }
+  .about-grid       { grid-template-columns: 1fr; }
+  .contact-grid     { grid-template-columns: 1fr; }
+  .footer-grid      { grid-template-columns: 1fr 1fr; }
+  .form-row         { grid-template-columns: 1fr; }
+
+  .hero             { min-height: 70vh; padding: 40px 20px; }
+  .section          { padding: 60px 20px; }
+}
+
+@media (max-width: 480px) {
+  /* Telas muito pequenas */
+  .stats-grid       { grid-template-columns: 1fr; }
+  .footer-grid      { grid-template-columns: 1fr; }
+  .hero-btns        { flex-direction: column; }
+  .modal-grid       { grid-template-columns: 1fr; }
+  .tech-grid        { grid-template-columns: repeat(2, 1fr); }
+}

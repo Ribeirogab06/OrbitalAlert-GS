@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OrbitAlert — Contato e Cadastro">
+  <title>Contato — OrbitAlert</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="scroll-bar"></div>
+
+  <header>
+    <a href="index.html" class="logo">OrbitAlert</a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="alertas.html">Alertas</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html" class="active">Contato</a>
+    </nav>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Menu mobile">
+    <a href="index.html">Início</a>
+    <a href="alertas.html">Alertas</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html" class="active">Contato</a>
+  </nav>
+
+  <main>
+
+    <!-- Hero da página -->
+    <div style="padding: 80px 24px 40px; max-width:1200px; margin:0 auto;">
+      <span style="font-family:var(--font-m);font-size:0.65rem;color:var(--accent);
+                   letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:16px;">
+        Cadastro e Contato
+      </span>
+      <h1 style="font-family:var(--font-d);font-size:clamp(1.8rem,4vw,3rem);font-weight:900;
+                 letter-spacing:2px;color:var(--txt);margin-bottom:10px;">
+        Entre em <span style="color:var(--accent)">Contato</span>
+      </h1>
+      <p style="font-family:var(--font-m);font-size:0.78rem;color:var(--txt2);
+                letter-spacing:1px;max-width:520px;line-height:1.7;">
+        Cadastre-se para receber alertas personalizados, solicitar acesso à API
+        ou entrar em contato com nossa equipe de monitoramento orbital.
+      </p>
+    </div>
+
+    <!-- Grid info + formulário -->
+    <div class="section" style="padding-top:0;">
+      <div class="contact-grid">
+
+        <!-- Coluna de informações -->
+        <div class="contact-info">
+
+          <h3>Canais de Acesso</h3>
+
+          <div class="info-item fade-in">
+            <span class="info-icon">✉</span>
+            <div>
+              <div class="info-label">Email Operacional</div>
+              <div class="info-value">contato@orbitalert.br</div>
+            </div>
+          </div>
+
+          <div class="info-item fade-in">
+            <span class="info-icon">⚡</span>
+            <div>
+              <div class="info-label">Alertas Urgentes</div>
+              <div class="info-value">urgente@orbitalert.br</div>
+            </div>
+          </div>
+
+          <div class="info-item fade-in">
+            <span class="info-icon">◉</span>
+            <div>
+              <div class="info-label">API e Integrações</div>
+              <div class="info-value">api@orbitalert.br</div>
+            </div>
+          </div>
+
+          <div class="info-item fade-in">
+            <span class="info-icon">⊕</span>
+            <div>
+              <div class="info-label">Parcerias</div>
+              <div class="info-value">parceria@orbitalert.br</div>
+            </div>
+          </div>
+
+          <div class="divider" style="margin: 24px 0;"></div>
+
+          <h3 style="font-size:0.75rem; margin-bottom:16px;">O que você recebe:</h3>
+
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="font-family:var(--font-m);font-size:0.72rem;color:var(--txt2);
+                       letter-spacing:1px;display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--ok)">✓</span> Alertas por e-mail em tempo real
+            </li>
+            <li style="font-family:var(--font-m);font-size:0.72rem;color:var(--txt2);
+                       letter-spacing:1px;display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--ok)">✓</span> Relatórios semanais de trajetória
+            </li>
+            <li style="font-family:var(--font-m);font-size:0.72rem;color:var(--txt2);
+                       letter-spacing:1px;display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--ok)">✓</span> Acesso à API de dados orbitais
+            </li>
+            <li style="font-family:var(--font-m);font-size:0.72rem;color:var(--txt2);
+                       letter-spacing:1px;display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--ok)">✓</span> Dashboard personalizado por região
+            </li>
+            <li style="font-family:var(--font-m);font-size:0.72rem;color:var(--txt2);
+                       letter-spacing:1px;display:flex;gap:10px;align-items:center;">
+              <span style="color:var(--ok)">✓</span> SMS para alertas críticos
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- Coluna do formulário -->
+        <div class="fade-in">
+
+          <h3 style="font-family:var(--font-d);font-size:0.85rem;font-weight:700;
+                     color:var(--txt);letter-spacing:2px;text-transform:uppercase;
+                     margin-bottom:24px;">
+            Formulário de Cadastro
+          </h3>
+
+          <form id="contact-form" novalidate>
+
+            <!-- Nome e email lado a lado -->
+            <div class="form-row">
+
+              <div class="form-group">
+                <label for="name">Nome Completo *</label>
+                <input type="text" id="name" name="name"
+                       placeholder="João da Silva"
+                       autocomplete="name" required>
+                <span class="field-error" id="name-err"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email"
+                       placeholder="joao@empresa.com"
+                       autocomplete="email" required>
+                <span class="field-error" id="email-err"></span>
+              </div>
+
+            </div>
+
+            <!-- Organização -->
+            <div class="form-group">
+              <label for="org">Organização *</label>
+              <input type="text" id="org" name="org"
+                     placeholder="Universidade, Empresa ou Agência" required>
+              <span class="field-error" id="org-err"></span>
+            </div>
+
+            <!-- Área de interesse -->
+            <div class="form-group">
+              <label for="interest">Área de Interesse *</label>
+              <select id="interest" name="interest" required>
+                <option value="">Selecione uma área...</option>
+                <option value="pesquisa">Pesquisa Científica</option>
+                <option value="operacional">Uso Operacional / API</option>
+                <option value="educacao">Educação e Divulgação</option>
+                <option value="governo">Governo e Defesa</option>
+                <option value="industria">Indústria Espacial</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="field-error" id="interest-err"></span>
+            </div>
+
+            <!-- Mensagem -->
+            <div class="form-group">
+              <label for="message">Mensagem *</label>
+              <textarea id="message" name="message"
+                        placeholder="Descreva sua necessidade ou dúvida (mínimo 20 caracteres)..."
+                        required></textarea>
+              <span class="field-error" id="message-err"></span>
+            </div>
+
+            <!-- Checkbox de termos -->
+            <div class="check-group">
+              <input type="checkbox" id="terms" name="terms">
+              <label for="terms">
+                Concordo com os termos de uso e autorizo o envio de alertas e
+                comunicações do OrbitAlert para o e-mail informado.
+              </label>
+            </div>
+
+            <!-- Botão de envio -->
+            <button type="submit" class="btn-primary" style="width:100%;text-align:center;">
+              Enviar Cadastro
+            </button>
+
+          </form>
+
+          <!-- Mensagem de sucesso -->
+          <div class="form-success" id="form-success">
+            <span class="ok-icon">✓</span>
+            <p><strong>Cadastro recebido com sucesso!</strong></p>
+            <p style="margin-top:6px;">Nossa equipe entrará em contato em até 48 horas.</p>
+          </div>
+
+        </div>
+
+      </div><!-- fim contact-grid -->
+    </div><!-- fim .section -->
+
+    <!-- FAQ com acordeão nativo -->
+    <div class="faq-section">
+
+      <h2>Perguntas Frequentes</h2>
+
+      <details>
+        <summary>Como os dados de trajetória são calculados?</summary>
+        <div>
+          <p>As trajetórias são calculadas usando elementos orbitais TLE (Two-Line Element Set) fornecidos pelo NORAD e USSPACECOM. O modelo de propagação SGP4 é aplicado para prever a posição dos objetos com horizonte de até 7 dias.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Com que frequência os alertas são atualizados?</summary>
+        <div>
+          <p>Os dados são atualizados a cada 4 horas. Para objetos com probabilidade de colisão acima de 0.001%, a frequência sobe para atualizações a cada hora.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>O OrbitAlert possui API pública?</summary>
+        <div>
+          <p>Sim, uma API RESTful está disponível para pesquisadores e instituições cadastradas. O acesso requer registro e aprovação da equipe técnica. Entre em contato via api@orbitalert.br.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Os dados cobrem apenas o Brasil?</summary>
+        <div>
+          <p>O foco principal são objetos com passes sobre o território brasileiro e sua zona econômica exclusiva. Porém, o banco de dados global do USSPACECOM é utilizado como fonte, portanto objetos em órbita global também são catalogados.</p>
+        </div>
+      </details>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">OrbitAlert</div>
+        <p class="footer-desc">Sistema de monitoramento de detritos espaciais em órbita baixa terrestre sobre o Brasil.</p>
+      </div>
+      <div>
+        <p class="footer-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="alertas.html">Alertas</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Fontes</p>
+        <ul class="footer-links">
+          <li><a href="#">NORAD / USSPACECOM</a></li>
+          <li><a href="#">NASA ODPO</a></li>
+          <li><a href="#">ESA Space Debris</a></li>
+          <li><a href="#">INPE — Brasil</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Status</p>
+        <ul class="footer-links">
+          <li><a href="#">Sistema Online</a></li>
+          <li><a href="#">Rastreamento Ativo</a></li>
+          <li><a href="#">API Operacional</a></li>
+          <li><a href="#">Alertas Ativos: 6</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2024 OrbitAlert — Dados para fins acadêmicos</span>
+      <span class="footer-version">v2.4.1 ALPHA</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
